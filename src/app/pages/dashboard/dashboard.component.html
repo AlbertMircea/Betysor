@@ -1,0 +1,30 @@
+<div class="dashboard-layout">
+
+  <!-- Fixed Left Panel -->
+  <section class="expenses-list">
+  <h2>Your Expenses</h2>
+
+  <div class="total-expenses">
+    Total: ${{ totalExpenses | number:'1.2-2' }}
+  </div>
+
+  <button (click)="toggleAddForm()" class="add-button">
+    {{ showAddForm ? 'Cancel' : '➕ Add New Expense' }}
+  </button>
+
+  <ul>
+    <li *ngFor="let expense of expenses" [style.borderLeft]="'5px solid ' + (expense.color || '#314A5E')">
+  <span>{{ expense.icon || '📝' }} {{ expense.name }}</span> – ${{ expense.amount }}
+  <button (click)="delete(expense.id)">Delete</button>
+</li>
+
+  </ul>
+</section>
+
+
+  <!-- Right Panel: Only shows if form is open -->
+  <section class="add-expense-form" *ngIf="showAddForm">
+    <app-add-expense [userId]="userId" (expenseAdded)="addExpenseFromChild($event)"></app-add-expense>
+  </section>
+
+</div>

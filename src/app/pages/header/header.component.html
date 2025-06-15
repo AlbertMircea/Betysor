@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="container">
+    <h1 class="logo">Finance Tracker</h1>
+    <nav>
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+
+      <ng-container *ngIf="user$ | async as user; else loggedOut">
+        <!-- User is logged in -->
+        <a (click)="logout()">Logout</a>
+      </ng-container>
+
+      <ng-template #loggedOut>
+        <!-- User is logged out -->
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+        <a routerLink="/register" routerLinkActive="active">Register</a>
+      </ng-template>
+    </nav>
+  </div>
+</header>

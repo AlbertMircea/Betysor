@@ -1,0 +1,27 @@
+<div class="add-expense-container">
+
+  <div  class="form-container">
+    <h3>Add New Expense</h3>
+
+    <label>
+      Name:
+      <input type="text" [(ngModel)]="name" placeholder="e.g. Groceries" />
+    </label>
+
+    <label>
+      Amount:
+      <input type="number" [(ngModel)]="amount" placeholder="e.g. 25.00" />
+    </label>
+
+    <label>
+      Category:
+      <select [(ngModel)]="selectedCategory">
+        <option *ngFor="let category of categories" [value]="category.name">
+          {{ category.icon }} {{ category.name }}
+        </option>
+      </select>
+    </label>
+
+    <button class="submit-button" (click)="addExpense()">💾 Save Expense</button>
+  </div>
+</div>
